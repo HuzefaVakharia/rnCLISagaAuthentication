@@ -1,3 +1,10 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable no-lone-blocks */
+/* eslint-disable comma-dangle */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable prettier/prettier */
+/* eslint-disable eol-last */
 import {ReportsActions} from '../actionNames';
 import {
   authorizedDelete,
@@ -39,7 +46,54 @@ export const createReport = async (id, name, report_type) => {
 
 export const loadReports = () => {
   return async (dispatch, getState) => {
-    const reports = getState().reports;
+   const reports = getState().reports;
+   console.log('Reports got these values: '+JSON.stringify(reports));
+   /* 
+   
+   QUESTION NUMBER 1: What is getstate in redux?
+   
+   getState()​ Returns the current state tree of your application. It is equal to the last value returned by the store's reducer.
+   
+   General syntax to fetch state of centralized store data using getState() function is:
+
+   getState().KEY_NAME_WHICH_WE_HAVE_COMBINED_WITH_OUR_REDUCER_FILE_NAME_IN_ROOT_REDUCER_FILE
+   
+  
+  
+  
+  
+  
+  
+    QUESTION NUMBER 2: When and Why we have to use getState() function to fetch our state data from our store inside our Action.js file in Redux project.
+    
+    As you have seen in this Reports.js when our Reports.js screen is loaded on our device we have to show static data from our store inside the screen of Reports.js file, this can be done using two things:
+    
+    1. using useSelector() hook 
+    2. or by using getState() function.
+
+    QUESTION NUMBER 3: What is the difference between getState() and useSelector() in Redux?
+
+    Ref: https://www.reddit.com/r/react/comments/jdbzme/what_is_the_difference_between_getstate_and/ 
+
+    
+
+I get that both functions enable you to access state from your component. I notice that in tutorials, getState is used in Actions as an argument and part of Redux Thunk? For example,
+
+export const getUserDetails = (id) => async (dispatch, getState) => {
+
+....}
+
+Whereas useSelector is used mostly in components. What exactly is the difference?
+
+
+
+
+
+Answer=>getState is just a function that returns current state. You could use the useStore hook in components to access it: const { getState } = useStore(). But instead you should use useSelector because it not only accesses store, it also rerenders your component when the result of your selector function changes. You also can use getState anywhere you want, but hooks can only be used in components.
+  
+  
+  
+   */
 
     try {
       dispatch(
@@ -48,6 +102,16 @@ export const loadReports = () => {
           isLoading: true,
         }),
       );
+
+        /* Here in above dispatch() we are calling action function setReports() and passing two things in that action function which will be required as payload to perform desired action of setReport(), the first thing is previously present reports array with ... spread operator so that each single array data is passed one by one with iteration and not like single data, and second thing is the isLoading value which will be true, these two things will go to the setReports() action defination as  
+        payload: reports
+        */
+
+
+
+
+
+
       const _reports = await authorizedGet('report/paginate');
       if (_reports.data) {
         dispatch(
@@ -250,7 +314,13 @@ export function updateReportAsync(report_id, title) {
   };
 }
 
+
+
+
+/* Action defination starts here */
+
 export const setReports = reports => {
+  console.log('setReports ACTION DISPATCHED with this payload value', reports);
   return {
     type: ReportsActions.LOAD_REPORT,
     payload: reports,

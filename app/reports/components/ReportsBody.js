@@ -1,3 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable no-lone-blocks */
+/* eslint-disable comma-dangle */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable prettier/prettier */
+/* eslint-disable eol-last */
+
+
 import {useDispatch, useSelector} from 'react-redux';
 import {
   addReportAsync,
@@ -130,6 +139,22 @@ export default function ReportsBody({navigation}) {
     );
   };
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* This below is the default return() of ReportsBody.js file and above two return() and kept inside function and will be returned when that function will be called.  */
+  
   return (
     <FlatList
       contentContainerStyle={{...globalStyle.reports, ...globalStyle.pb150}}

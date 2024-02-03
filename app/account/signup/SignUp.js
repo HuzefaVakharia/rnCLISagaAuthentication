@@ -170,6 +170,9 @@ export default myStore;
 
 
   const isLoading = useSelector(state => state.signup22);
+  /* General syntax of useSelector() hook for fetching data from our store is:
+  
+  useSelector(state=>state.KEY_NAME_WHICH_WE_HAVE_COMBINED_WITH_OUR_REDUCER_FILE_NAME_IN_ROOT_REDUCER_FILE.(OPTIONAL THING)NAME_OF_PARTICULAR_DATA_LIKE_ISLOADING_WHICH_IS_BEING_RETURENED_BY_REDUCER)*/
 
 /* 
 We can also fetch redux maintained data by using this syntax "const isLoading = useSelector(state => state.signup22);" in which we will not specify .isLoading, and if we fetch data from our redux system without using specific name of attribute which we want to fetch we will get a raw formate data from our redux system which we can see by puting inside JSON stringify using "alert('signup22 data is:'+JSON.stringify(isLoading));" but when we want to fetch particular attribute from our redux data we will using this below syntax:

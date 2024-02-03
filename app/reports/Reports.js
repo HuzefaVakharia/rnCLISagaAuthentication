@@ -15,6 +15,7 @@ export default function Reports({navigation}) {
   useEffect(() => {
     dispatch(loadReports());
     // eslint-disable-next-line
+    
   }, []);
 
   return (
